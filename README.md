@@ -5,7 +5,7 @@ An image viewer that loads QOI images on N64
 ![An fuzzy image of a parrot](demo_images/qoi_demo_image0.jpg)
 ![An fuzzy image of four dice. Red die is in front. Blue, green, yellow in the back in a triangle clockwise formation](demo_images/qoi_demo_image1.jpg)
 
-# How to View Images on N64 QOI Viewer
+## How to View Images on N64 QOI Viewer
 The maximum supported width is 320px and the maximum supported height is 240px
 1. Encode your image into QOI using the following commands. The one in <> are changeable
 ```bash
