@@ -5,6 +5,27 @@ An image viewer that loads QOI images on N64
 ![An fuzzy image of a parrot](demo_images/qoi_demo_image0.jpg)
 ![An fuzzy image of four dice. Red die is in front. Blue, green, yellow in the back in a triangle clockwise formation](demo_images/qoi_demo_image1.jpg)
 
+# How to View Images on N64 QOI Viewer
+The maximum supported width is 320px and the maximum supported height is 240px
+1. Encode your image into QOI using the following commands. The one in <> are changeable
+```bash
+ffmpeg -i <input file to image> -pix_fmt <rgb24 or rgba> -s <width>x<height> <output file to image>.qoi
+```
+
+For pixel art, the flags will scale the image using nearest neighor: `-sws_flags neighbor`
+This is useful for scaling up pixel art images
+
+2. Change the names array and name_arr_size the amount in src/main.c
+```c
+// files to load from filesystem
+char* names[] = {
+    "rom:/location_of_your_qoi_image.qoi"
+}; // ...
+
+int name_arr_size = 14; // change this line to match the amount of images
+
+// ...
+```
 ## How to Build N64 QOI Viewer
 This tutorial assumes you have your N64 Toolchain set up including GCC for MIPS
 Make sure you are on the preview branch of libdragon.
