@@ -2,6 +2,10 @@
 
     main.c
 
+    This file is the entry point of the N64 QOI Viewer ROM
+
+    TODO: Refactor main.c into functions and files
+
     Code licensed under MIT License
 
     Copyright (c) 2025 Aftersol
