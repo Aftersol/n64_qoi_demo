@@ -4,4 +4,4 @@ build
 .libdragon
 
 # N64 ROM file type
-.z64
+*.z64

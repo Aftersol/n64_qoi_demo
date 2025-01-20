@@ -1,9 +1,9 @@
 # N64 QOI Viewer
 
+An image viewer that loads QOI images on N64
+
 ![An fuzzy image of a parrot](demo_images/qoi_demo_image0.jpg)
 ![An fuzzy image of four dice. Red die is in front. Blue, green, yellow in the back in a triangle clockwise formation](demo_images/qoi_demo_image1.jpg)
-
-An image viewer that loads QOI images on N64
 
 Make sure you are on the preview branch of libdragon.
 
@@ -23,6 +23,15 @@ To build this project:
 libdragon make
 ```
 
-Everything in the src folder is under MIT License
+---
 
-The images in the filesystem folder are under their respective licenses
+## Licenses
+
+Everything in the src folder is licensed under MIT License
+
+In the filesystem folder the following images are in public domain:
+- qrcode.qoi
+- smpte_color_bars.qoi
+- ebu_colour_bars.qoi
+
+The rest of the images in the filesystem folder are under their respective licenses
