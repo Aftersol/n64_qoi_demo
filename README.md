@@ -27,7 +27,7 @@ int name_arr_size = 14; // change this line to match the amount of images
 // ...
 ```
 ## How to Build N64 QOI Viewer
-This tutorial assumes you have your N64 Toolchain set up including GCC for MIPS
+This tutorial assumes you have your N64 Toolchain set up including GCC for MIPS.
 Make sure you are on the preview branch of libdragon.
 
 Clone this repository with `--recurse-submodules` or if you haven't run:
