@@ -1,0 +1,7 @@
+
+build
+.vscode
+.libdragon
+
+# N64 ROM file type
+.z64
