@@ -1,5 +1,8 @@
 # N64 QOI Viewer
 
+![An fuzzy image of a parrot](demo_images/qoi_demo_image0.jpg)
+![An fuzzy image of four dice. Red die is in front. Blue, green, yellow in the back in a triangle clockwise formation](demo_images/qoi_demo_image1.jpg)
+
 An image viewer that loads QOI images on N64
 
 Make sure you are on the preview branch of libdragon.
