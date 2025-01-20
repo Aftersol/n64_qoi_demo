@@ -2,6 +2,8 @@
 
     qoi_viewer.c
 
+    This header contains implementation of functions related to QOI viewer
+
     Code licensed under MIT License
 
     Copyright (c) 2025 Aftersol

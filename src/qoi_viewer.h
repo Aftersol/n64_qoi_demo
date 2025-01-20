@@ -2,6 +2,8 @@
 
     qoi_viewer.h
 
+    This header contains declaration of functions related to QOI viewer
+
     Code licensed under MIT License
 
     Copyright (c) 2025 Aftersol
@@ -36,7 +38,8 @@ extern "C" {
 #include "sQOI.h"
 #include <stdint.h>
 
-#define IMG_BUFFER_SIZE 307200 // Image buffer size: 320*240*4
+// Image buffer size: 320*240*4
+#define IMG_BUFFER_SIZE 307200
 
 typedef enum qoi_error_code {QOI_OK, QOI_NULL_BUFFER, QOI_NO_FILE, QOI_NO_FILENAME} qoi_error_code;
 
