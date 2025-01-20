@@ -5,19 +5,22 @@ An image viewer that loads QOI images on N64
 ![An fuzzy image of a parrot](demo_images/qoi_demo_image0.jpg)
 ![An fuzzy image of four dice. Red die is in front. Blue, green, yellow in the back in a triangle clockwise formation](demo_images/qoi_demo_image1.jpg)
 
+## How to Build N64 QOI Viewer
+This tutorial assumes you have your N64 Toolchain set up including GCC for MIPS
 Make sure you are on the preview branch of libdragon.
 
 Clone this repository with `--recurse-submodules` or if you haven't run:
 
 ```bash
+
 git submodule update --init
 ```
-
-To initalize libdragon:
+---
+Initalize libdragon:
 ```bash
 libdragon init
 ```
-To build this project:
+Then run make to build this project:
 
 ```bash
 libdragon make
