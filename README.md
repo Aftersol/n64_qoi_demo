@@ -16,7 +16,9 @@ ffmpeg -i <input file to image> -pix_fmt <rgb24 or rgba> -s <width>x<height> <ou
 For pixel art, the flags will scale the image using the nearest neighbor flag: `-sws_flags neighbor`
 This is useful for scaling up pixel art images
 
-2. Change the names array and name_arr_size the amount in src/main.c
+2. Place the encoded QOI images into the filesystem folder. make will include these images in the filesystem folder into built ROM.
+
+3. Change the names array and name_arr_size the amount in src/main.c
 ```c
 // files to load from filesystem
 char* names[] = {
