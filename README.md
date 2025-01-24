@@ -7,7 +7,7 @@ An image viewer that loads QOI images on N64
 
 ## How to View Images on N64 QOI Viewer
 The maximum supported width is 320px and the maximum supported height is 240px.
-This assumes you have FFMPEG installed.
+This step assumes you have FFMPEG installed.
 1. Encode your image into QOI using the following commands. The ones in <> are changeable
 ```bash
 ffmpeg -i <input file to image> -pix_fmt <rgb24 or rgba> -s <width>x<height> <output file to image>.qoi
