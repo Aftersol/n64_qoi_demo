@@ -3,16 +3,17 @@
 An image viewer that loads QOI images on N64
 
 ![An fuzzy image of a parrot](demo_images/qoi_demo_image0.jpg)
-![An fuzzy image of four dice. Red die is in front. Blue, green, yellow in the back in a triangle clockwise formation](demo_images/qoi_demo_image1.jpg)
+![An fuzzy image of four dice. The red die is in front. Blue, green, and yellow in the back in a triangle clockwise formation](demo_images/qoi_demo_image1.jpg)
 
 ## How to View Images on N64 QOI Viewer
-The maximum supported width is 320px and the maximum supported height is 240px
-1. Encode your image into QOI using the following commands. The one in <> are changeable
+The maximum supported width is 320px and the maximum supported height is 240px.
+This assumes you have FFMPEG installed.
+1. Encode your image into QOI using the following commands. The ones in <> are changeable
 ```bash
 ffmpeg -i <input file to image> -pix_fmt <rgb24 or rgba> -s <width>x<height> <output file to image>.qoi
 ```
 
-For pixel art, the flags will scale the image using nearest neighor: `-sws_flags neighbor`
+For pixel art, the flags will scale the image using the nearest neighbor flag: `-sws_flags neighbor`
 This is useful for scaling up pixel art images
 
 2. Change the names array and name_arr_size the amount in src/main.c
@@ -37,7 +38,7 @@ Clone this repository with `--recurse-submodules` or if you haven't run:
 git submodule update --init
 ```
 ---
-Initalize libdragon:
+Initialize libdragon:
 ```bash
 libdragon init
 ```
@@ -53,7 +54,7 @@ libdragon make
 
 Everything in the src folder is licensed under MIT License
 
-In the filesystem folder the following images are in public domain:
+In the filesystem folder the following images are in the public domain:
 - qrcode.qoi
 - smpte_color_bars.qoi
 - ebu_colour_bars.qoi
