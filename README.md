@@ -46,8 +46,8 @@ libdragon make
 Everything in the src folder is licensed under MIT License
 
 In the filesystem folder the following images are in the public domain:
-- qrcode.qoi
-- smpte_color_bars.qoi
-- ebu_colour_bars.qoi
+- zz_qrcode.qoi
+- z_smpte_color_bars.qoi
+- z_ebu_colour_bars.qoi
 
 The rest of the images in the filesystem folder are under their respective licenses
