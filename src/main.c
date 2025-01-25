@@ -67,7 +67,10 @@ int main(void) {
     char sbuf[MAX_STRING_SIZE];
     
     name_node_pool_t start_node = (name_node_pool_t) {
-        .prev = &start_node, // loop itself if there is one pool sector
+        // loop back into itself if there is only one pool sector
+        // upon user trying to enter the previous or next node
+        // after user reaches the beginning or end of a node respectively
+        .prev = &start_node, 
         .next = &start_node,
         .num_images = 0
     };
