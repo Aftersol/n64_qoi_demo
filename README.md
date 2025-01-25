@@ -18,8 +18,6 @@ This is useful for scaling up pixel art images
 
 2. Place the encoded QOI images into the filesystem folder. make will include these images in the filesystem folder into built ROM.
 
-// ...
-```
 ## How to Build N64 QOI Viewer
 This tutorial assumes you have your N64 Toolchain set up including GCC for MIPS.
 Make sure you are on the preview branch of libdragon.
