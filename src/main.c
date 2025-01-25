@@ -39,38 +39,45 @@
 
 #include "qoi_viewer.h"
 
+#define ARENA_IMG_SIZE 15
+#define MAX_STRING_SIZE MAX_FILENAME_LEN + 1
 uint8_t buffer0[IMG_BUFFER_SIZE];
 uint8_t buffer1[IMG_BUFFER_SIZE];
 
-// files to load from filesystem
-char* names[] = {
-    "rom:/overscan.qoi",
-    "rom:/smpte_color_bars.qoi",
-    "rom:/ebu_colour_bars.qoi",
-    "rom:/pal_pm5544.qoi",
-    "rom:/dice.qoi",
-    "rom:/edgecase.qoi",
-    "rom:/kodim10.qoi",
-    "rom:/kodim23.qoi",
-    "rom:/qoi_logo.qoi",
-    "rom:/testcard_rgba.qoi",
-    "rom:/testcard.qoi",
-    "rom:/wikipedia_008.qoi",
-    "rom:/qrcode.qoi",
-    "rom:/credits.qoi"
+joypad_inputs_t joypad_poll_port(joypad_port_t port) {
+    joypad_poll();
+    return joypad_get_inputs(port); 
+}
+
+typedef struct name_node_pool_t name_node_pool_t;
+struct name_node_pool_t {
+    name_node_pool_t* prev;
+    name_node_pool_t* next;
+    
+    int num_images;
+
+    char name[ARENA_IMG_SIZE][MAX_STRING_SIZE];
 };
 
-int main(void)
-{
+int main(void) {
     long long start, end;
+
     int index = 0, prev_index = 0;
-    int name_arr_size = 14; // change this line to match the amount of images
+
+    char sbuf[MAX_STRING_SIZE];
+    
+    name_node_pool_t start_node = (name_node_pool_t) {
+        .prev = &start_node, // loop itself if there is one pool sector
+        .next = &start_node,
+        .num_images = 0
+    };
+    name_node_pool_t* current_node = &start_node;
     
     qoi_img_info_t info = (qoi_img_info_t) {
         .width = 0,
         .height = 0,
         .channels = 0,
-        .error = QOI_OK
+        .error = QOI_NOT_INITALIZED
     };
 
     rdpq_font_t *font;
@@ -85,30 +92,63 @@ int main(void)
 
     dfs_init(DFS_DEFAULT_LOCATION);
     
+    memset(sbuf, 0, MAX_STRING_SIZE);
+
+    strncpy(sbuf, "rom:/", 6);
+    if (dfs_dir_findfirst(".", sbuf+5) == FLAGS_FILE) {
+        name_node_pool_t* node = &start_node;
+        
+        do {
+            if (node->num_images >= ARENA_IMG_SIZE) {
+                // the program runs forever so no need to free pool
+                name_node_pool_t* new_node = (name_node_pool_t*)malloc(sizeof(name_node_pool_t));
+                
+                assert(new_node != NULL);
+
+                new_node->prev = node;
+                new_node->next = &start_node;
+                new_node->num_images = 0; 
+
+                node->next = (name_node_pool_t*)new_node;
+                start_node.prev = (name_node_pool_t*)new_node;
+
+                node = (name_node_pool_t*)new_node;
+            }
+
+            memset(node->name[node->num_images], 0, MAX_STRING_SIZE);
+            snprintf(node->name[node->num_images], MAX_STRING_SIZE - 1, sbuf);
+
+            node->num_images++;
+            
+        } while (dfs_dir_findnext(sbuf+5) == FLAGS_FILE);
+    }
+    else { // you can't compile with an empty directory
+        assert("No files found in ROM.");
+    }
+
     memset(buffer0, 0, IMG_BUFFER_SIZE); // clear the buffer
 
     start = timer_ticks();
-    openQOIFile(names[0], &buffer0[0], &info);
+    openQOIFile(start_node.name[0], &buffer0[0], &info);
     end = timer_ticks();
 
+    assert(info.error == QOI_OK);
 
     // somehow double buffering
     // the image 
     // fixes black lines at the
     // bottom of the screen
     memcpy(buffer1, buffer0, IMG_BUFFER_SIZE);  
-    
-    assert(info.error == QOI_OK);
 
     printf(
         "decoded %s in %f ms!\n",
-        names[0],
+        start_node.name[0],
         ((float)end - (float)start) / 1000.0f
     ); // time in ms spent decoding
     
     printf(
         "First pixel of %s: %i %i %i %i\n", 
-        names[0],
+        start_node.name[0],
         buffer0[0],
         buffer0[1],
         buffer0[2],
@@ -138,17 +178,12 @@ int main(void)
     font = rdpq_font_load_builtin(FONT_BUILTIN_DEBUG_MONO);
     rdpq_text_register_font(1, font);
 
-    while(1) {
+    while (1) {
         surface_t* disp;
 
-        joypad_poll();
-
-        // read first controller port
-        joypad_port_t port = JOYPAD_PORT_1;
-        joypad_inputs_t input = joypad_get_inputs(port); 
-
         while(!(disp = display_try_get())) {;}
-
+        joypad_port_t port = JOYPAD_PORT_1;
+        joypad_inputs_t input = joypad_poll_port(port);
         // go to previous image if left is pressed
         if (
             input.btn.b || 
@@ -158,8 +193,11 @@ int main(void)
             joypad_get_axis_pressed(port, JOYPAD_AXIS_STICK_X) == -1
         ) {
             index--;
+
             if (index == -1) {
-                index = name_arr_size - 1;
+                current_node = (name_node_pool_t*)current_node->prev;
+                index = current_node->num_images - 1;
+                assert(index >= 0);
             }
 
         }
@@ -173,7 +211,8 @@ int main(void)
             joypad_get_axis_pressed(port, JOYPAD_AXIS_STICK_X) == 1
         ) {
             index++;
-            if (index == name_arr_size) {
+            if (index >= current_node->num_images) {
+                current_node = (name_node_pool_t*)current_node->next;
                 index = 0;
             }
         }
@@ -182,44 +221,15 @@ int main(void)
         if (prev_index != index) {
             prev_index = index;
 
-            openQOIFile(names[index], buffer0, &info);
+            //openQOIFile(names[index], buffer0, &info);
+
+            openQOIFile(current_node->name[index], buffer0, &info);
             memcpy(buffer1, buffer0, IMG_BUFFER_SIZE);
 
-            assert(!info.error);
+            assert(info.error == QOI_OK);
         }
 
-        rdpq_attach(disp, NULL);
-
-        surface_t image = surface_make_linear(
-            buffer0,
-            FMT_RGBA32,
-            info.width,
-            info.height
-        );
-
-        rdpq_set_fill_color(RGBA32(0, 0, 0, 255));
-        rdpq_fill_rectangle(0, 0, 320, 240);
-        
-        // draw decoded image into screen
-        rdpq_tex_blit(&image, 0.0, 0.0, NULL);
-
-
-        // this causes framebuffer to turn black and white 
-        // with distored image so commented out
-        /*rdpq_text_printf(
-            NULL, 
-            1, 
-            32, 
-            32, 
-            "Current Image: %s\nSize: %i x %i\nChannels: %i",
-            names[index],
-            info.width,
-            info.height,
-            info.channels
-            );*/ 
-
-
-        rdpq_detach_show();
+        draw_image(disp, info);
         
     }
 }

@@ -37,11 +37,23 @@ extern "C" {
 
 #include "sQOI.h"
 #include <stdint.h>
+#include <libdragon.h>
 
 // Image buffer size: 320*240*4
 #define IMG_BUFFER_SIZE 307200
 
-typedef enum qoi_error_code {QOI_OK, QOI_NULL_BUFFER, QOI_NO_FILE, QOI_NO_FILENAME} qoi_error_code;
+extern uint8_t buffer0[IMG_BUFFER_SIZE];
+
+extern uint8_t buffer1[IMG_BUFFER_SIZE];
+
+typedef enum qoi_error_code {
+    QOI_NOT_INITALIZED = -1,
+    QOI_OK, 
+    QOI_NULL_BUFFER,
+    QOI_INVAILD_FILE,
+    QOI_NO_FILE,
+    QOI_NO_FILENAME
+} qoi_error_code;
 
 typedef struct qoi_img_info {
     int width;
@@ -50,6 +62,7 @@ typedef struct qoi_img_info {
     qoi_error_code error;
 } qoi_img_info_t;
 
+void draw_image(surface_t* disp, qoi_img_info_t info);
 void openQOIFile(const char* filename, uint8_t* bytes, qoi_img_info_t* info);
 
 #if __cplusplus
