@@ -18,15 +18,6 @@ This is useful for scaling up pixel art images
 
 2. Place the encoded QOI images into the filesystem folder. make will include these images in the filesystem folder into built ROM.
 
-3. Change the names array and name_arr_size the amount in src/main.c
-```c
-// files to load from filesystem
-char* names[] = {
-    "rom:/location_of_your_qoi_image.qoi"
-}; // ...
-
-int name_arr_size = 14; // change this line to match the amount of images
-
 // ...
 ```
 ## How to Build N64 QOI Viewer
