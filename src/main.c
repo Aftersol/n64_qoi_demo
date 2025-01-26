@@ -39,7 +39,7 @@
 
 #include "qoi_viewer.h"
 
-#define ARENA_IMG_SIZE 15
+#define POOL_IMG_SIZE 15
 #define MAX_STRING_SIZE MAX_FILENAME_LEN + 1
 uint8_t buffer0[IMG_BUFFER_SIZE];
 uint8_t buffer1[IMG_BUFFER_SIZE];
@@ -56,7 +56,7 @@ struct name_node_pool_t {
     
     int num_images;
 
-    char name[ARENA_IMG_SIZE][MAX_STRING_SIZE];
+    char name[POOL_IMG_SIZE][MAX_STRING_SIZE];
 };
 
 int main(void) {
@@ -102,7 +102,7 @@ int main(void) {
         name_node_pool_t* node = &start_node;
         
         do {
-            if (node->num_images >= ARENA_IMG_SIZE) {
+            if (node->num_images >= POOL_IMG_SIZE) {
                 // the program runs forever so no need to free pool
                 name_node_pool_t* new_node = (name_node_pool_t*)malloc(sizeof(name_node_pool_t));
                 
