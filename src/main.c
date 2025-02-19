@@ -39,32 +39,110 @@
 
 #include "qoi_viewer.h"
 
+/// @brief How many names can fit in a block
 #define POOL_IMG_SIZE 15
+
+/// @brief Maximum length of a string. File names are limited by libdragon to 243 characters
 #define MAX_STRING_SIZE MAX_FILENAME_LEN + 1
+
+/// @brief Raw image buffer that decoded from qoi image file
 uint8_t buffer0[IMG_BUFFER_SIZE];
+
+/// @brief second raw image buffer that decoded from qoi image file
 uint8_t buffer1[IMG_BUFFER_SIZE];
 
-joypad_inputs_t joypad_poll_port(joypad_port_t port) {
+/// @brief Poll controller and get input from a specific port
+/// @param port port controller from the n64
+/// @return input to a specified port
+inline joypad_inputs_t joypad_poll_port(joypad_port_t port) {
     joypad_poll();
     return joypad_get_inputs(port); 
 }
 
+/// @brief A containers for a bunch of names
 typedef struct name_node_pool_t name_node_pool_t;
 struct name_node_pool_t {
+
+    /// @brief A pointer to the previous block of names
     name_node_pool_t* prev;
+
+    /// @brief A pointer to the next block of names
     name_node_pool_t* next;
     
+    /// @brief Number of images occupied in the block. 32 bit integer for word alignment purposes
     int num_images;
 
+    /// @brief A list of names in a block
     char name[POOL_IMG_SIZE][MAX_STRING_SIZE];
 };
+
+void readNames(name_node_pool_t* start_node) {
+    char sbuf[MAX_STRING_SIZE];
+    
+    strncpy(sbuf, "rom:/", 6);
+    if (dfs_dir_findfirst(".", sbuf+5) == FLAGS_FILE) {
+        name_node_pool_t* node = start_node;
+        
+        do {
+            if (node->num_images >= POOL_IMG_SIZE) {
+                // the program runs forever so no need to free pool
+                name_node_pool_t* new_node = (name_node_pool_t*)malloc(sizeof(name_node_pool_t));
+                
+                assert(new_node != NULL);
+
+                new_node->prev = node;
+                new_node->next = start_node;
+                new_node->num_images = 0; 
+
+                node->next = (name_node_pool_t*)new_node;
+                start_node->prev = (name_node_pool_t*)new_node;
+
+                node = (name_node_pool_t*)new_node;
+            }
+
+            memset(node->name[node->num_images], 0, MAX_STRING_SIZE);
+            snprintf(node->name[node->num_images], MAX_STRING_SIZE - 1, sbuf);
+
+            node->num_images++;
+            
+        } while (dfs_dir_findnext(sbuf+5) == FLAGS_FILE);
+    }
+    else { // you can't compile with an empty directory
+        assert("No files found in ROM.");
+    }
+}
+
+inline void init_program() {
+    console_init();
+
+    debug_init_usblog();
+    console_set_debug(true);
+
+    timer_init();
+    joypad_init();
+
+    dfs_init(DFS_DEFAULT_LOCATION);
+}
+
+inline void start_viewer() {
+        // QOI only supports 32 bit RGBA image
+    // so set display bits to 32 bits per pixel
+    display_init(
+        RESOLUTION_320x240,
+        DEPTH_32_BPP,
+        2,
+        GAMMA_NONE,
+        FILTERS_RESAMPLE
+    );
+
+    rdpq_init();
+    rdpq_set_mode_standard();
+}
 
 int main(void) {
     long long start, end;
 
     int index = 0, prev_index = 0;
-
-    char sbuf[MAX_STRING_SIZE];
     
     name_node_pool_t start_node = (name_node_pool_t) {
         // loop back into itself if there is only one pool sector
@@ -85,49 +163,9 @@ int main(void) {
 
     rdpq_font_t *font;
 
-    console_init();
-
-    debug_init_usblog();
-    console_set_debug(true);
-
-    timer_init();
-    joypad_init();
-
-    dfs_init(DFS_DEFAULT_LOCATION);
+    init_program();
     
-    memset(sbuf, 0, MAX_STRING_SIZE);
-
-    strncpy(sbuf, "rom:/", 6);
-    if (dfs_dir_findfirst(".", sbuf+5) == FLAGS_FILE) {
-        name_node_pool_t* node = &start_node;
-        
-        do {
-            if (node->num_images >= POOL_IMG_SIZE) {
-                // the program runs forever so no need to free pool
-                name_node_pool_t* new_node = (name_node_pool_t*)malloc(sizeof(name_node_pool_t));
-                
-                assert(new_node != NULL);
-
-                new_node->prev = node;
-                new_node->next = &start_node;
-                new_node->num_images = 0; 
-
-                node->next = (name_node_pool_t*)new_node;
-                start_node.prev = (name_node_pool_t*)new_node;
-
-                node = (name_node_pool_t*)new_node;
-            }
-
-            memset(node->name[node->num_images], 0, MAX_STRING_SIZE);
-            snprintf(node->name[node->num_images], MAX_STRING_SIZE - 1, sbuf);
-
-            node->num_images++;
-            
-        } while (dfs_dir_findnext(sbuf+5) == FLAGS_FILE);
-    }
-    else { // you can't compile with an empty directory
-        assert("No files found in ROM.");
-    }
+    readNames(&start_node);
 
     memset(buffer0, 0, IMG_BUFFER_SIZE); // clear the buffer
 
@@ -165,18 +203,7 @@ int main(void) {
 
     timer_close();
 
-    // QOI only supports 32 bit RGBA image
-    // so set display bits to 32 bits per pixel
-    display_init(
-        RESOLUTION_320x240,
-        DEPTH_32_BPP,
-        2,
-        GAMMA_NONE,
-        FILTERS_RESAMPLE
-    );
-
-    rdpq_init();
-    rdpq_set_mode_standard();
+    start_viewer();
 
     font = rdpq_font_load_builtin(FONT_BUILTIN_DEBUG_MONO);
     rdpq_text_register_font(1, font);
@@ -185,8 +212,10 @@ int main(void) {
         surface_t* disp;
 
         while(!(disp = display_try_get())) {;}
+
         joypad_port_t port = JOYPAD_PORT_1;
         joypad_inputs_t input = joypad_poll_port(port);
+
         // go to previous image if left is pressed
         if (
             input.btn.b || 
@@ -223,8 +252,6 @@ int main(void) {
         // load next image upon pressing left or right
         if (prev_index != index) {
             prev_index = index;
-
-            //openQOIFile(names[index], buffer0, &info);
 
             openQOIFile(current_node->name[index], buffer0, &info);
             memcpy(buffer1, buffer0, IMG_BUFFER_SIZE);

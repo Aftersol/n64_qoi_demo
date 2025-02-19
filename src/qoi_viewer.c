@@ -30,18 +30,27 @@
 
 
 #define SIMPLIFIED_QOI_IMPLEMENTATION
+
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+#include <string.h>
 
 #include "sQOI.h"
 #include "qoi_viewer.h"
 
 #include <assert.h>
 
-void draw_image(surface_t* disp, qoi_img_info_t info) {
-    rdpq_attach(disp, NULL);
-
+/// @brief This draw image decoded from QOI
+/// @param disp Surface image
+/// @param info QOI info for drawing image properly
+inline void draw_image(surface_t* disp, qoi_img_info_t info) {
+    const char rgbStr[] = "RGB";
+    const char rgbaStr[] = "RGA";
+    const char unknownStr[] = "???";
+    const char* channelStr;
+    
     surface_t image = surface_make_linear(
         buffer0,
         FMT_RGBA32,
@@ -49,32 +58,47 @@ void draw_image(surface_t* disp, qoi_img_info_t info) {
         info.height
     );
 
+    rdpq_attach(disp, NULL);
+
+    rdpq_set_mode_standard();
+
     rdpq_set_fill_color(RGBA32(0, 0, 0, 255));
     rdpq_fill_rectangle(0, 0, 320, 240);
-    
+
     // draw decoded image into screen
     rdpq_tex_blit(&image, 0.0, 0.0, NULL);
 
+    if (info.channels == 3) {
+        channelStr = rgbStr;
+    } else if (info.channels == 4) {
+        channelStr = rgbaStr;
+    }
+    else {
+        channelStr = unknownStr;
+    }
 
-    // this causes framebuffer to turn black and white 
-    // with distored image so commented out
-    /*rdpq_text_printf(
+    rdpq_text_printf(
         NULL, 
         1, 
         32, 
         32, 
-        "Current Image: %s\nSize: %i x %i\nChannels: %i",
-        names[index],
+        "Current Image: %s\nSize: %i x %i\nChannels: %i (%s)",
+        info.name,
         info.width,
         info.height,
-        info.channels
-        );*/ 
+        info.channels,
+        channelStr
+        );
 
 
     rdpq_detach_show();
 }
 
-/* This function decodes QOI file from from into the framebuffer */
+
+/// @brief This function decodes QOI file from from into the framebuffer
+/// @param filename Name of the QOI file
+/// @param bytes Pointer to a raw image buffer
+/// @param info QOI decoding info as a result of decoding qoi file
 void openQOIFile(const char* filename, uint8_t* bytes, qoi_img_info_t* info) {
     
     if (!bytes) {
@@ -155,6 +179,8 @@ void openQOIFile(const char* filename, uint8_t* bytes, qoi_img_info_t* info) {
 
     }
     
+    memset(info->name, 0, 256);
+    memcpy(info->name, filename, strlen(filename) < 256 ? strlen(filename) : 255);
     info->error = QOI_OK;
 
 cleanup:

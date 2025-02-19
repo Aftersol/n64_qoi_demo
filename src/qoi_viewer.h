@@ -56,10 +56,20 @@ typedef enum qoi_error_code {
 } qoi_error_code;
 
 typedef struct qoi_img_info {
+    /// @brief Width of the QOI image
     int width;
+
+    /// @brief Height of the QOI image
     int height;
+
+    /// @brief Number of channels of the QOI image where 3 is RGB and 4 is RGBA
     int channels;
+
+    /// @brief Error code as the result of decoding
     qoi_error_code error;
+
+    /// @brief Names of QOI file
+    char name[256];
 } qoi_img_info_t;
 
 void draw_image(surface_t* disp, qoi_img_info_t info);
