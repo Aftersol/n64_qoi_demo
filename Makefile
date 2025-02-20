@@ -32,7 +32,7 @@ assets = $(wildcard $(FILESYSTEM_DIR)/*.qoi)
 
 OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/qoi_viewer.o
 
-qoi.z64: N64_ROM_TITLE="QOI Image Viewer"
+qoi.z64: N64_ROM_TITLE="qoiImageViewer"
 qoi.z64: $(BUILD_DIR)/qoi.dfs
 
 $(BUILD_DIR)/qoi.elf: $(OBJS)
