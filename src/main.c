@@ -217,6 +217,7 @@ int main(void) {
         joypad_inputs_t input = joypad_poll_port(port);
         joypad_buttons_t pressed = joypad_get_buttons_pressed(port);
 
+        // toggle debug text upon pressing these buttons
         if (pressed.start || pressed.z) {
             info.renderDebugFont ^= true;
         }
@@ -233,8 +234,6 @@ int main(void) {
             index--;
 
             if (index == -1) {
-                //index = name_arr_size - 1;
-
                 current_node = (name_node_pool_t*)current_node->prev;
                 index = current_node->num_images - 1;
                 assert(index >= 0);
@@ -255,16 +254,11 @@ int main(void) {
                 current_node = (name_node_pool_t*)current_node->next;
                 index = 0;
             }
-            /*if (index == name_arr_size) {
-                index = 0;
-            }*/
         }
 
         // load next image upon pressing left or right
         if (prev_index != index) {
             prev_index = index;
-
-            //openQOIFile(names[index], buffer0, &info);
 
             openQOIFile(current_node->name[index], buffer0, &info);
             memcpy(buffer1, buffer0, IMG_BUFFER_SIZE);
