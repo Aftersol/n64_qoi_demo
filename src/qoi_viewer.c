@@ -45,9 +45,9 @@
 /// @brief This draw image decoded from QOI
 /// @param disp Surface image
 /// @param info QOI info for drawing image properly
-inline void draw_image(surface_t* disp, qoi_img_info_t info) {
+void draw_image(surface_t* disp, qoi_img_info_t info) {
     const char rgbStr[] = "RGB";
-    const char rgbaStr[] = "RGA";
+    const char rgbaStr[] = "RGBA";
     const char unknownStr[] = "???";
     const char* channelStr;
     
@@ -68,28 +68,34 @@ inline void draw_image(surface_t* disp, qoi_img_info_t info) {
     // draw decoded image into screen
     rdpq_tex_blit(&image, 0.0, 0.0, NULL);
 
-    if (info.channels == 3) {
-        channelStr = rgbStr;
-    } else if (info.channels == 4) {
-        channelStr = rgbaStr;
+    if (info.renderDebugFont == true) {
+        if (info.channels == 3) {
+            channelStr = rgbStr;
+        } else if (info.channels == 4) {
+            channelStr = rgbaStr;
+        }
+        else {
+            channelStr = unknownStr;
+        }
+    
+        rdpq_text_printf(
+            &(rdpq_textparms_t) {
+                .width = 320-32,
+                .align = ALIGN_LEFT,
+                .wrap = WRAP_WORD,
+            }, 
+            1, 
+            32, 
+            32, 
+            "Current Image: %s\nSize: %i x %i\nChannels: %i (%s)\nDecode Time: %f ms",
+            info.name,
+            info.width,
+            info.height,
+            info.channels,
+            channelStr,
+            info.decodeTime * 1000.0f
+            );
     }
-    else {
-        channelStr = unknownStr;
-    }
-
-    rdpq_text_printf(
-        NULL, 
-        1, 
-        32, 
-        32, 
-        "Current Image: %s\nSize: %i x %i\nChannels: %i (%s)",
-        info.name,
-        info.width,
-        info.height,
-        info.channels,
-        channelStr
-        );
-
 
     rdpq_detach_show();
 }
@@ -101,6 +107,15 @@ inline void draw_image(surface_t* disp, qoi_img_info_t info) {
 /// @param info QOI decoding info as a result of decoding qoi file
 void openQOIFile(const char* filename, uint8_t* bytes, qoi_img_info_t* info) {
     
+    qoi_desc_t desc;
+    qoi_dec_t dec;
+    qoi_pixel_t px;
+    uint8_t* qoi_bytes;
+    int seek = 0, buffer_size;
+    long long start, end;
+
+    FILE* fp;
+
     if (!bytes) {
         info->error = QOI_NULL_BUFFER;
         return;
@@ -111,19 +126,14 @@ void openQOIFile(const char* filename, uint8_t* bytes, qoi_img_info_t* info) {
         return;
     }
 
-    qoi_desc_t desc;
-    qoi_dec_t dec;
-    qoi_pixel_t px;
-    uint8_t* qoi_bytes;
-    int seek = 0, buffer_size;
-
-    FILE* fp = fopen(filename, "rb");
+    start = timer_ticks();
+    fp = fopen(filename, "rb");
 
     if (!fp) {
         info->error = QOI_NO_FILE;
         return;
     }
-
+    
     fseek(fp, 0, SEEK_END);
     buffer_size = ftell(fp);
     fseek(fp, 0, SEEK_SET);
@@ -149,6 +159,16 @@ void openQOIFile(const char* filename, uint8_t* bytes, qoi_img_info_t* info) {
     info->height = desc.height;
     info->channels = desc.channels;
 
+    assertf(
+        info->width * info->height * info->channels <= IMG_BUFFER_SIZE,
+        "%s is too big to open and read\n\
+        To prevent buffer overrun on big sized QOI images,\n\
+         QOI Viewer has been terminated.\n\
+        Make sure your QOI image is a maximum of 320 pixels\n\
+         in width and 240 pixels in height",
+        filename
+    ); // crash to prevent buffer overrun
+
     dec = (qoi_dec_t){
         .run = 0,
         .pad = 0,
@@ -168,8 +188,6 @@ void openQOIFile(const char* filename, uint8_t* bytes, qoi_img_info_t* info) {
     while (!qoi_dec_done(&dec)) {
         px = qoi_decode_chunk(&dec);
         
-        assert(seek < IMG_BUFFER_SIZE); // crash to prevent buffer overrun
-        
         bytes[seek] = px.red;
         bytes[seek+1] = px.green;
         bytes[seek+2] = px.blue;
@@ -186,5 +204,6 @@ void openQOIFile(const char* filename, uint8_t* bytes, qoi_img_info_t* info) {
 cleanup:
     free(qoi_bytes);
     qoi_bytes = NULL;
-    
+    end = timer_ticks();
+    info->decodeTime = (float)((float)(end - start) / (float)TICKS_PER_SECOND);
 }

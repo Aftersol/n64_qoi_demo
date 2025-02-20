@@ -37,6 +37,7 @@ extern "C" {
 
 #include "sQOI.h"
 #include <stdint.h>
+#include <stdbool.h>
 #include <libdragon.h>
 
 // Image buffer size: 320*240*4
@@ -68,8 +69,13 @@ typedef struct qoi_img_info {
     /// @brief Error code as the result of decoding
     qoi_error_code error;
 
+    /// @brief Decoding time in seconds
+    float decodeTime;
+
     /// @brief Names of QOI file
     char name[256];
+
+    bool renderDebugFont;
 } qoi_img_info_t;
 
 void draw_image(surface_t* disp, qoi_img_info_t info);

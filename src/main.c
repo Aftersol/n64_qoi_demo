@@ -61,6 +61,7 @@ inline joypad_inputs_t joypad_poll_port(joypad_port_t port) {
 
 /// @brief A containers for a bunch of names
 typedef struct name_node_pool_t name_node_pool_t;
+
 struct name_node_pool_t {
 
     /// @brief A pointer to the previous block of names
@@ -75,6 +76,7 @@ struct name_node_pool_t {
     /// @brief A list of names in a block
     char name[POOL_IMG_SIZE][MAX_STRING_SIZE];
 };
+
 
 void readNames(name_node_pool_t* start_node) {
     char sbuf[MAX_STRING_SIZE];
@@ -125,22 +127,22 @@ inline void init_program() {
 }
 
 inline void start_viewer() {
-        // QOI only supports 32 bit RGBA image
-    // so set display bits to 32 bits per pixel
-    display_init(
-        RESOLUTION_320x240,
-        DEPTH_32_BPP,
-        2,
-        GAMMA_NONE,
-        FILTERS_RESAMPLE
-    );
+    // QOI only supports 32 bit RGBA image
+// so set display bits to 32 bits per pixel
+display_init(
+    RESOLUTION_320x240,
+    DEPTH_32_BPP,
+    2,
+    GAMMA_NONE,
+    FILTERS_RESAMPLE
+);
 
-    rdpq_init();
-    rdpq_set_mode_standard();
+rdpq_init();
+rdpq_set_mode_standard();
+
 }
-
 int main(void) {
-    long long start, end;
+    
 
     int index = 0, prev_index = 0;
     
@@ -148,7 +150,7 @@ int main(void) {
         // loop back into itself if there is only one pool sector
         // upon user trying to enter the previous or next node
         // after user reaches the beginning or end of a node respectively
-        .prev = &start_node, 
+        .prev = &start_node,
         .next = &start_node,
         .num_images = 0
     };
@@ -168,10 +170,8 @@ int main(void) {
     readNames(&start_node);
 
     memset(buffer0, 0, IMG_BUFFER_SIZE); // clear the buffer
-
-    start = timer_ticks();
+    
     openQOIFile(start_node.name[0], &buffer0[0], &info);
-    end = timer_ticks();
 
     assert(info.error == QOI_OK);
 
@@ -184,7 +184,7 @@ int main(void) {
     printf(
         "decoded %s in %f ms!\n",
         start_node.name[0],
-        ((float)end - (float)start) / 1000.0f
+        info.decodeTime * 1000.0f
     ); // time in ms spent decoding
     
     printf(
@@ -201,20 +201,26 @@ int main(void) {
     console_clear();
     console_close();
 
-    timer_close();
-
     start_viewer();
 
     font = rdpq_font_load_builtin(FONT_BUILTIN_DEBUG_MONO);
     rdpq_text_register_font(1, font);
 
+    info.renderDebugFont = true;
+
     while (1) {
         surface_t* disp;
 
         while(!(disp = display_try_get())) {;}
-
         joypad_port_t port = JOYPAD_PORT_1;
+
         joypad_inputs_t input = joypad_poll_port(port);
+        joypad_buttons_t pressed = joypad_get_buttons_pressed(port);
+
+        if (pressed.start || pressed.z) {
+            info.renderDebugFont ^= true;
+        }
+
 
         // go to previous image if left is pressed
         if (
@@ -227,6 +233,8 @@ int main(void) {
             index--;
 
             if (index == -1) {
+                //index = name_arr_size - 1;
+
                 current_node = (name_node_pool_t*)current_node->prev;
                 index = current_node->num_images - 1;
                 assert(index >= 0);
@@ -247,11 +255,16 @@ int main(void) {
                 current_node = (name_node_pool_t*)current_node->next;
                 index = 0;
             }
+            /*if (index == name_arr_size) {
+                index = 0;
+            }*/
         }
 
         // load next image upon pressing left or right
         if (prev_index != index) {
             prev_index = index;
+
+            //openQOIFile(names[index], buffer0, &info);
 
             openQOIFile(current_node->name[index], buffer0, &info);
             memcpy(buffer1, buffer0, IMG_BUFFER_SIZE);
