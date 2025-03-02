@@ -84,6 +84,8 @@ struct name_node_pool_t {
 };
 
 
+/// @brief Reads the names of QOI images from ROM
+/// @param start_node The inital node
 void readNames(name_node_pool_t* start_node) {
     char sbuf[MAX_STRING_SIZE];
     
