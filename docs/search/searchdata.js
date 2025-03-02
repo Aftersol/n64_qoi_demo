@@ -5,8 +5,9 @@ var indexSectionsWithContent =
   2: "mq",
   3: "dijmors",
   4: "bcdehnprw",
-  5: "n",
-  6: "mp"
+  5: "nq",
+  6: "q",
+  7: "mp"
 };
 
 var indexSectionNames =
@@ -17,7 +18,8 @@ var indexSectionNames =
   3: "functions",
   4: "variables",
   5: "typedefs",
-  6: "defines"
+  6: "enums",
+  7: "defines"
 };
 
 var indexSectionLabels =
@@ -28,6 +30,7 @@ var indexSectionLabels =
   3: "Functions",
   4: "Variables",
   5: "Typedefs",
-  6: "Macros"
+  6: "Enumerations",
+  7: "Macros"
 };
 

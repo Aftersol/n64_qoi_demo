@@ -49,6 +49,7 @@ extern uint8_t buffer0[IMG_BUFFER_SIZE];
 
 extern uint8_t buffer1[IMG_BUFFER_SIZE];
 
+/// @brief Error codes for different situations when handling a QOI file
 typedef enum qoi_error_code {
     QOI_NOT_INITALIZED = -1,
     QOI_OK, 
@@ -58,6 +59,7 @@ typedef enum qoi_error_code {
     QOI_NO_FILENAME
 } qoi_error_code;
 
+/// @brief Metadata about the QOI image and the QOI image viewer
 typedef struct qoi_img_info {
     /// @brief Width of the QOI image
     int width;
@@ -81,7 +83,15 @@ typedef struct qoi_img_info {
     bool renderDebugFont;
 } qoi_img_info_t;
 
+/// @brief This function draws image decoded from QOI
+/// @param disp Surface image
+/// @param info QOI info for drawing image properly
 void draw_image(surface_t* disp, qoi_img_info_t info);
+
+/// @brief This function decodes QOI file from from into the framebuffer
+/// @param filename Name of the QOI file
+/// @param bytes Pointer to a raw image buffer
+/// @param info QOI decoding info as a result of decoding qoi file
 void openQOIFile(const char* filename, uint8_t* bytes, qoi_img_info_t* info);
 
 #if __cplusplus
