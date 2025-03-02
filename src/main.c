@@ -174,7 +174,7 @@ int main(void) {
         .error = QOI_NOT_INITALIZED
     };
 
-    /// @brief Font for displaying debug text
+    // Font for displaying debug text
     rdpq_font_t *font;
 
     init_program();
