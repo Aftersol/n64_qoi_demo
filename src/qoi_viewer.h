@@ -27,6 +27,8 @@
     SOFTWARE.
 
 */
+/// @file qoi_viewer.h
+/// @brief This header contains declaration of functions related to QOI viewer
 
 #ifndef QOI_VIEWER_H
 #define QOI_VIEWER_H

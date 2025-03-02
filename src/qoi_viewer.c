@@ -2,7 +2,7 @@
 
     qoi_viewer.c
 
-    This header contains implementation of functions related to QOI viewer
+    This source code implements functions related to QOI viewer
 
     Code licensed under MIT License
 
@@ -28,6 +28,8 @@
 
 */
 
+/// @file qoi_viewer.c
+/// @brief This source code implements functions related to QOI viewer
 
 #define SIMPLIFIED_QOI_IMPLEMENTATION
 
@@ -42,7 +44,7 @@
 
 #include <assert.h>
 
-/// @brief This draw image decoded from QOI
+/// @brief This function draws image decoded from QOI
 /// @param disp Surface image
 /// @param info QOI info for drawing image properly
 void draw_image(surface_t* disp, qoi_img_info_t info) {

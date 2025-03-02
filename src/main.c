@@ -30,6 +30,11 @@
 
 */
 
+
+/// @file main.c
+/// @brief This file is the entry point of the N64 QOI Viewer ROM
+
+
 #include <stdio.h>
 #include <string.h>
 
@@ -59,9 +64,10 @@ inline joypad_inputs_t joypad_poll_port(joypad_port_t port) {
     return joypad_get_inputs(port); 
 }
 
-/// @brief A containers for a bunch of names
+/// @brief A container for holding a bunch of names
 typedef struct name_node_pool_t name_node_pool_t;
 
+/// @brief A container for holding a bunch of names
 struct name_node_pool_t {
 
     /// @brief A pointer to the previous block of names
@@ -114,6 +120,7 @@ void readNames(name_node_pool_t* start_node) {
     }
 }
 
+/// @brief This function initalizes libdragon functions
 inline void init_program() {
     console_init();
 
@@ -126,21 +133,24 @@ inline void init_program() {
     dfs_init(DFS_DEFAULT_LOCATION);
 }
 
+/// @brief This function starts QOI viewer to display first QOI image decoded
 inline void start_viewer() {
     // QOI only supports 32 bit RGBA image
-// so set display bits to 32 bits per pixel
-display_init(
-    RESOLUTION_320x240,
-    DEPTH_32_BPP,
-    2,
-    GAMMA_NONE,
-    FILTERS_RESAMPLE
-);
+    // so set display bits to 32 bits per pixel
+    display_init(
+        RESOLUTION_320x240,
+        DEPTH_32_BPP,
+        2,
+        GAMMA_NONE,
+        FILTERS_RESAMPLE
+    );
 
-rdpq_init();
-rdpq_set_mode_standard();
+    rdpq_init();
+    rdpq_set_mode_standard();
 
 }
+
+/// @brief This function is the entry point for QOI Viewer
 int main(void) {
     
 
@@ -154,6 +164,7 @@ int main(void) {
         .next = &start_node,
         .num_images = 0
     };
+
     name_node_pool_t* current_node = &start_node;
     
     qoi_img_info_t info = (qoi_img_info_t) {
@@ -163,6 +174,7 @@ int main(void) {
         .error = QOI_NOT_INITALIZED
     };
 
+    /// @brief Font for displaying debug text
     rdpq_font_t *font;
 
     init_program();

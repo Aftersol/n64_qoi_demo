@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['width_0',['width',['../structqoi__img__info.html#ac6c57de74c954dae47e41797a4270f42',1,'qoi_img_info']]]
+  ['prev_0',['prev',['../structname__node__pool__t.html#a08b822983824cb3de59f6497dea42c8b',1,'name_node_pool_t']]]
 ];

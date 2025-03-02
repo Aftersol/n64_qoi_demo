@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['channels_0',['channels',['../structqoi__img__info.html#a1f1cc4cf6f27026630ea3a8d01bbae4b',1,'qoi_img_info']]]
+  ['buffer0_0',['buffer0',['../main_8c.html#abcd3aaf24d360ff1478cfa5f3bd16dd0',1,'buffer0:&#160;main.c'],['../qoi__viewer_8h.html#abcd3aaf24d360ff1478cfa5f3bd16dd0',1,'buffer0:&#160;main.c']]],
+  ['buffer1_1',['buffer1',['../main_8c.html#a71e76fb2289b3a7546a9d89fbe48cd41',1,'buffer1:&#160;main.c'],['../qoi__viewer_8h.html#a71e76fb2289b3a7546a9d89fbe48cd41',1,'buffer1:&#160;main.c']]]
 ];
