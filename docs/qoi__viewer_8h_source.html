@@ -176,19 +176,19 @@ $(function(){initNavTree('qoi__viewer_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="structqoi__img__info.html#a825bb69ebb50023208732fcb27c27c50">   75</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structqoi__img__info.html#a825bb69ebb50023208732fcb27c27c50">decodeTime</a>;</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="structqoi__img__info.html#a592d1a6b2f4da4ca1fb7da519ba6551c">   78</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structqoi__img__info.html#a592d1a6b2f4da4ca1fb7da519ba6551c">name</a>[256];</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">bool</span> renderDebugFont;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>} qoi_img_info_t;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="structqoi__img__info.html#aca8cd3eceb6028554abc51d1e022c068">   81</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structqoi__img__info.html#aca8cd3eceb6028554abc51d1e022c068">renderDebugFont</a>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>} qoi_img_info_t;</div>
 </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keywordtype">void</span> <a class="code hl_function" href="qoi__viewer_8h.html#acf78f4e0b7d8127f774ca8fe1284981c">draw_image</a>(surface_t* disp, qoi_img_info_t info);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keywordtype">void</span> <a class="code hl_function" href="qoi__viewer_8h.html#ae6448532d9241468e03949360ffb01dc">openQOIFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* filename, uint8_t* bytes, qoi_img_info_t* info);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#if __cplusplus</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#endif </span><span class="comment">// QOI_VIEWER_H</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keywordtype">void</span> <a class="code hl_function" href="qoi__viewer_8h.html#acf78f4e0b7d8127f774ca8fe1284981c">draw_image</a>(surface_t* disp, qoi_img_info_t info);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keywordtype">void</span> <a class="code hl_function" href="qoi__viewer_8h.html#ae6448532d9241468e03949360ffb01dc">openQOIFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* filename, uint8_t* bytes, qoi_img_info_t* info);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#if __cplusplus</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>}</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">#endif </span><span class="comment">// QOI_VIEWER_H</span></div>
 <div class="ttc" id="amain_8c_html_a71e76fb2289b3a7546a9d89fbe48cd41"><div class="ttname"><a href="main_8c.html#a71e76fb2289b3a7546a9d89fbe48cd41">buffer1</a></div><div class="ttdeci">uint8_t buffer1[IMG_BUFFER_SIZE]</div><div class="ttdoc">second raw image buffer that decoded from qoi image file</div><div class="ttdef"><b>Definition</b> main.c:57</div></div>
 <div class="ttc" id="amain_8c_html_abcd3aaf24d360ff1478cfa5f3bd16dd0"><div class="ttname"><a href="main_8c.html#abcd3aaf24d360ff1478cfa5f3bd16dd0">buffer0</a></div><div class="ttdeci">uint8_t buffer0[IMG_BUFFER_SIZE]</div><div class="ttdoc">Raw image buffer that decoded from qoi image file.</div><div class="ttdef"><b>Definition</b> main.c:54</div></div>
 <div class="ttc" id="aqoi__viewer_8h_html_acf78f4e0b7d8127f774ca8fe1284981c"><div class="ttname"><a href="qoi__viewer_8h.html#acf78f4e0b7d8127f774ca8fe1284981c">draw_image</a></div><div class="ttdeci">void draw_image(surface_t *disp, qoi_img_info_t info)</div><div class="ttdoc">This function draws image decoded from QOI.</div><div class="ttdef"><b>Definition</b> qoi_viewer.c:50</div></div>
@@ -199,6 +199,7 @@ $(function(){initNavTree('qoi__viewer_8h_source.html',''); initResizable(true); 
 <div class="ttc" id="astructqoi__img__info_html_a64edd9fe9dfc45abe6e2865192a71f18"><div class="ttname"><a href="structqoi__img__info.html#a64edd9fe9dfc45abe6e2865192a71f18">qoi_img_info::height</a></div><div class="ttdeci">int height</div><div class="ttdoc">Height of the QOI image.</div><div class="ttdef"><b>Definition</b> qoi_viewer.h:66</div></div>
 <div class="ttc" id="astructqoi__img__info_html_a825bb69ebb50023208732fcb27c27c50"><div class="ttname"><a href="structqoi__img__info.html#a825bb69ebb50023208732fcb27c27c50">qoi_img_info::decodeTime</a></div><div class="ttdeci">float decodeTime</div><div class="ttdoc">Decoding time in seconds.</div><div class="ttdef"><b>Definition</b> qoi_viewer.h:75</div></div>
 <div class="ttc" id="astructqoi__img__info_html_ac6c57de74c954dae47e41797a4270f42"><div class="ttname"><a href="structqoi__img__info.html#ac6c57de74c954dae47e41797a4270f42">qoi_img_info::width</a></div><div class="ttdeci">int width</div><div class="ttdoc">Width of the QOI image.</div><div class="ttdef"><b>Definition</b> qoi_viewer.h:63</div></div>
+<div class="ttc" id="astructqoi__img__info_html_aca8cd3eceb6028554abc51d1e022c068"><div class="ttname"><a href="structqoi__img__info.html#aca8cd3eceb6028554abc51d1e022c068">qoi_img_info::renderDebugFont</a></div><div class="ttdeci">bool renderDebugFont</div><div class="ttdoc">Whether to toggle displaying debug text upon pressing the Start button on the N64 controller.</div><div class="ttdef"><b>Definition</b> qoi_viewer.h:81</div></div>
 <div class="ttc" id="astructqoi__img__info_html_affe8dac946d467455e1370f4210ac856"><div class="ttname"><a href="structqoi__img__info.html#affe8dac946d467455e1370f4210ac856">qoi_img_info::error</a></div><div class="ttdeci">qoi_error_code error</div><div class="ttdoc">Error code as the result of decoding.</div><div class="ttdef"><b>Definition</b> qoi_viewer.h:72</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

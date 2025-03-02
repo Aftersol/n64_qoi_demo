@@ -43,6 +43,7 @@ var NAVTREEINDEX0 =
 "structqoi__img__info.html#a592d1a6b2f4da4ca1fb7da519ba6551c":[0,0,1,4],
 "structqoi__img__info.html#a64edd9fe9dfc45abe6e2865192a71f18":[0,0,1,3],
 "structqoi__img__info.html#a825bb69ebb50023208732fcb27c27c50":[0,0,1,1],
-"structqoi__img__info.html#ac6c57de74c954dae47e41797a4270f42":[0,0,1,5],
+"structqoi__img__info.html#ac6c57de74c954dae47e41797a4270f42":[0,0,1,6],
+"structqoi__img__info.html#aca8cd3eceb6028554abc51d1e022c068":[0,0,1,5],
 "structqoi__img__info.html#affe8dac946d467455e1370f4210ac856":[0,0,1,2]
 };

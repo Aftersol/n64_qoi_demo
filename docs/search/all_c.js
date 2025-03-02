@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['start_5fviewer_0',['start_viewer',['../main_8c.html#a6d6076969f544a77c57a6b3fe6e7b197',1,'main.c']]]
+  ['renderdebugfont_0',['renderDebugFont',['../structqoi__img__info.html#aca8cd3eceb6028554abc51d1e022c068',1,'qoi_img_info']]]
 ];

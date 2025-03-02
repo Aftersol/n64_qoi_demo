@@ -77,6 +77,7 @@ typedef struct qoi_img_info {
     /// @brief Names of QOI file
     char name[256];
 
+    /// @brief Whether to toggle displaying debug text upon pressing the Start button on the N64 controller
     bool renderDebugFont;
 } qoi_img_info_t;
 

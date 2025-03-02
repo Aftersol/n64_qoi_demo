@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['width_0',['width',['../structqoi__img__info.html#ac6c57de74c954dae47e41797a4270f42',1,'qoi_img_info']]]
+  ['start_5fviewer_0',['start_viewer',['../main_8c.html#a6d6076969f544a77c57a6b3fe6e7b197',1,'main.c']]]
 ];

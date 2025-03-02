@@ -5,5 +5,6 @@ var structqoi__img__info =
     [ "error", "structqoi__img__info.html#affe8dac946d467455e1370f4210ac856", null ],
     [ "height", "structqoi__img__info.html#a64edd9fe9dfc45abe6e2865192a71f18", null ],
     [ "name", "structqoi__img__info.html#a592d1a6b2f4da4ca1fb7da519ba6551c", null ],
+    [ "renderDebugFont", "structqoi__img__info.html#aca8cd3eceb6028554abc51d1e022c068", null ],
     [ "width", "structqoi__img__info.html#ac6c57de74c954dae47e41797a4270f42", null ]
 ];
