@@ -1,0 +1,25 @@
+var NAVTREEINDEX0 =
+{
+"annotated.html":[0,0],
+"classes.html":[0,1],
+"dir_68267d1309a1af8e8297ef4c3efbcdba.html":[1,0,0],
+"files.html":[1,0],
+"functions.html":[0,2,0],
+"functions_vars.html":[0,2,1],
+"index.html":[],
+"pages.html":[],
+"qoi__viewer_8h_source.html":[1,0,0,0],
+"s_q_o_i_8h_source.html":[1,0,0,1],
+"structname__node__pool__t.html":[0,0,0],
+"structname__node__pool__t.html#a08b822983824cb3de59f6497dea42c8b":[0,0,0,3],
+"structname__node__pool__t.html#a5f3dd95e29ae048095435184a00d01e3":[0,0,0,2],
+"structname__node__pool__t.html#a6e23407dbb571296a01217b3412627a4":[0,0,0,1],
+"structname__node__pool__t.html#a726fc38bef640fcf694e444aa0440cbe":[0,0,0,0],
+"structqoi__img__info.html":[0,0,1],
+"structqoi__img__info.html#a1f1cc4cf6f27026630ea3a8d01bbae4b":[0,0,1,0],
+"structqoi__img__info.html#a592d1a6b2f4da4ca1fb7da519ba6551c":[0,0,1,4],
+"structqoi__img__info.html#a64edd9fe9dfc45abe6e2865192a71f18":[0,0,1,3],
+"structqoi__img__info.html#a825bb69ebb50023208732fcb27c27c50":[0,0,1,1],
+"structqoi__img__info.html#ac6c57de74c954dae47e41797a4270f42":[0,0,1,5],
+"structqoi__img__info.html#affe8dac946d467455e1370f4210ac856":[0,0,1,2]
+};
