@@ -83,7 +83,6 @@ struct name_node_pool_t {
     char name[POOL_IMG_SIZE][MAX_STRING_SIZE];
 };
 
-
 /// @brief Reads the names of QOI images from ROM
 /// @param start_node The inital node
 void readNames(name_node_pool_t* start_node) {
@@ -123,7 +122,7 @@ void readNames(name_node_pool_t* start_node) {
 }
 
 /// @brief This function initalizes libdragon functions
-inline void init_program() {
+static inline void init_program() {
     console_init();
 
     debug_init_usblog();
@@ -136,13 +135,13 @@ inline void init_program() {
 }
 
 /// @brief This function starts QOI viewer to display first QOI image decoded
-inline void start_viewer() {
+void start_viewer() {
     // QOI only supports 32 bit RGBA image
     // so set display bits to 32 bits per pixel
     display_init(
         RESOLUTION_320x240,
         DEPTH_32_BPP,
-        2,
+        2, // double buffered
         GAMMA_NONE,
         FILTERS_RESAMPLE
     );
@@ -151,6 +150,24 @@ inline void start_viewer() {
     rdpq_set_mode_standard();
 
 }
+
+void printFirstDecodedValues(qoi_img_info_t* info) {
+    printf(
+        "decoded %s in %f ms!\n",
+        info->name,
+        info->decodeTime * 1000.0f
+    ); // time in ms spent decoding
+    
+    printf(
+        "First pixel of %s: %i %i %i %i\n", 
+        info->name,
+        buffer0[0],
+        buffer0[1],
+        buffer0[2],
+        buffer0[3]
+    ); // get color of first pixel
+}
+
 
 /// @brief This function is the entry point for QOI Viewer
 int main(void) {
@@ -195,20 +212,7 @@ int main(void) {
     // bottom of the screen
     memcpy(buffer1, buffer0, IMG_BUFFER_SIZE);  
 
-    printf(
-        "decoded %s in %f ms!\n",
-        start_node.name[0],
-        info.decodeTime * 1000.0f
-    ); // time in ms spent decoding
-    
-    printf(
-        "First pixel of %s: %i %i %i %i\n", 
-        start_node.name[0],
-        buffer0[0],
-        buffer0[1],
-        buffer0[2],
-        buffer0[3]
-    ); // get color of first pixel
+    printFirstDecodedValues(&info);
     
     wait_ms(1000);
 
@@ -233,9 +237,8 @@ int main(void) {
 
         // toggle debug text upon pressing these buttons
         if (pressed.start || pressed.z) {
-            info.renderDebugFont ^= true;
+            toggleDebugText(&info);
         }
-
 
         // go to previous image if left is pressed
         if (
@@ -252,7 +255,6 @@ int main(void) {
                 index = current_node->num_images - 1;
                 assert(index >= 0);
             }
-
         }
 
         // advance to next image if right is pressed

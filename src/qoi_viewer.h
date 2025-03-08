@@ -94,6 +94,12 @@ void draw_image(surface_t* disp, qoi_img_info_t info);
 /// @param info QOI decoding info as a result of decoding qoi file
 void openQOIFile(const char* filename, uint8_t* bytes, qoi_img_info_t* info);
 
+/// @brief Toggles printing debugging text
+/// @param info QOI decoding info
+inline void toggleDebugText(qoi_img_info_t* info) {
+    info->renderDebugFont ^= true;
+}
+
 #if __cplusplus
 }
 #endif
