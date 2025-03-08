@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['start_5fviewer_0',['start_viewer',['../main_8c.html#a6d6076969f544a77c57a6b3fe6e7b197',1,'main.c']]]
+  ['toggledebugtext_0',['toggleDebugText',['../qoi__viewer_8h.html#a6c3db5d405b4fbf12a440fa014e9a7ef',1,'qoi_viewer.h']]]
 ];

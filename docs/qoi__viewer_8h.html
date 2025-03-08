@@ -164,6 +164,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae6448532d9241468e03949360ffb01dc" id="r_ae6448532d9241468e03949360ffb01dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6448532d9241468e03949360ffb01dc">openQOIFile</a> (const char *filename, uint8_t *bytes, <a class="el" href="#af665b5bf330172f0f1d548e0a6fbca76">qoi_img_info_t</a> *info)</td></tr>
 <tr class="memdesc:ae6448532d9241468e03949360ffb01dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function decodes QOI file from from into the framebuffer.  <br /></td></tr>
 <tr class="separator:ae6448532d9241468e03949360ffb01dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c3db5d405b4fbf12a440fa014e9a7ef" id="r_a6c3db5d405b4fbf12a440fa014e9a7ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c3db5d405b4fbf12a440fa014e9a7ef">toggleDebugText</a> (<a class="el" href="#af665b5bf330172f0f1d548e0a6fbca76">qoi_img_info_t</a> *info)</td></tr>
+<tr class="memdesc:a6c3db5d405b4fbf12a440fa014e9a7ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggles printing debugging text.  <br /></td></tr>
+<tr class="separator:a6c3db5d405b4fbf12a440fa014e9a7ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -239,6 +242,39 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer1</b> [IMG_B
     <tr><td class="paramname">filename</td><td>Name of the QOI file </td></tr>
     <tr><td class="paramname">bytes</td><td>Pointer to a raw image buffer </td></tr>
     <tr><td class="paramname">info</td><td>QOI decoding info as a result of decoding qoi file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6c3db5d405b4fbf12a440fa014e9a7ef" name="a6c3db5d405b4fbf12a440fa014e9a7ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c3db5d405b4fbf12a440fa014e9a7ef">&#9670;&#160;</a></span>toggleDebugText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void toggleDebugText </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#af665b5bf330172f0f1d548e0a6fbca76">qoi_img_info_t</a> *</td>          <td class="paramname"><span class="paramname"><em>info</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Toggles printing debugging text. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">info</td><td>QOI decoding info </td></tr>
   </table>
   </dd>
 </dl>

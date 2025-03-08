@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['init_5fprogram_0',['init_program',['../main_8c.html#a6ca3ffd4ca27041da4ef7781dbfbfe46',1,'main.c']]]
+  ['joypad_5fpoll_5fport_0',['joypad_poll_port',['../main_8c.html#ab9f7e04bbdd497fc3190e913d0c64b67',1,'main.c']]]
 ];
