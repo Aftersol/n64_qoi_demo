@@ -190,16 +190,15 @@ void openQOIFile(const char* filename, uint8_t* bytes, qoi_img_info_t* info) {
     while (!qoi_dec_done(&dec)) {
         px = qoi_decode_chunk(&dec);
         
-        bytes[seek] = px.red;
-        bytes[seek+1] = px.green;
-        bytes[seek+2] = px.blue;
-        bytes[seek+3] = px.alpha;
+        *(uint32_t*)(bytes+seek) = px.concatenated_pixel_values;
         
         seek += 4;
 
     }
     
     memset(info->name, 0, 256);
+
+    // copy first 255 characters to prevent string overflow
     memcpy(info->name, filename, strlen(filename) < 256 ? strlen(filename) : 255);
     info->error = QOI_OK;
 
