@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['joypad_5fpoll_5fport_0',['joypad_poll_port',['../main_8c.html#ab9f7e04bbdd497fc3190e913d0c64b67',1,'main.c']]]
+  ['img_5fbuffer_5fsize_0',['IMG_BUFFER_SIZE',['../qoi__viewer_8h.html#af95d0d3fb6f9a4c1f198a1bbc520a6ad',1,'qoi_viewer.h']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['start_5fviewer_0',['start_viewer',['../main_8c.html#a6d6076969f544a77c57a6b3fe6e7b197',1,'main.c']]]
+  ['readnames_0',['readNames',['../main_8c.html#a570238657db903b42ff5a10345574d7d',1,'main.c']]]
 ];

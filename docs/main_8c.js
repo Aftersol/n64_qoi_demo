@@ -6,6 +6,7 @@ var main_8c =
     [ "name_node_pool_t", "main_8c.html#a47a00c1f290928b2f18021e5f380cb29", null ],
     [ "joypad_poll_port", "main_8c.html#ab9f7e04bbdd497fc3190e913d0c64b67", null ],
     [ "main", "main_8c.html#a840291bc02cba5474a4cb46a9b9566fe", null ],
+    [ "printFirstDecodedValues", "main_8c.html#a9be0b2a964508d1ec5636f04bc095ce1", null ],
     [ "readNames", "main_8c.html#a570238657db903b42ff5a10345574d7d", null ],
     [ "start_viewer", "main_8c.html#a6d6076969f544a77c57a6b3fe6e7b197", null ],
     [ "buffer0", "main_8c.html#abcd3aaf24d360ff1478cfa5f3bd16dd0", null ],

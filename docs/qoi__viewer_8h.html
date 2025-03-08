@@ -26,7 +26,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="n64_qoi_logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="n64_qoi_logo_64px.png"/></td>
   <td id="projectalign">
    <div id="projectname">N64 QOI Demo
    </div>
@@ -128,6 +128,7 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:af95d0d3fb6f9a4c1f198a1bbc520a6ad" id="r_af95d0d3fb6f9a4c1f198a1bbc520a6ad"><td class="memItemLeft" align="right" valign="top"><a id="af95d0d3fb6f9a4c1f198a1bbc520a6ad" name="af95d0d3fb6f9a4c1f198a1bbc520a6ad"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>IMG_BUFFER_SIZE</b>&#160;&#160;&#160;307200</td></tr>
+<tr class="memdesc:af95d0d3fb6f9a4c1f198a1bbc520a6ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Image buffer size: 320 pixels in width * 240 pixels in height * 4 channels. <br /></td></tr>
 <tr class="separator:af95d0d3fb6f9a4c1f198a1bbc520a6ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -143,17 +144,17 @@ typedef struct <a class="el" href="structqoi__img__info.html">qoi_img_info</a>&#
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ad0e1e402662e1d56f6ca85763b2644e6" id="r_ad0e1e402662e1d56f6ca85763b2644e6"><td class="memItemLeft" align="right" valign="top"><a id="ad0e1e402662e1d56f6ca85763b2644e6" name="ad0e1e402662e1d56f6ca85763b2644e6"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0e1e402662e1d56f6ca85763b2644e6">qoi_error_code</a> { <br />
-&#160;&#160;<b>QOI_NOT_INITALIZED</b> = -1
-, <b>QOI_OK</b>
-, <b>QOI_NULL_BUFFER</b>
-, <b>QOI_INVAILD_FILE</b>
+<tr class="memitem:ad0e1e402662e1d56f6ca85763b2644e6" id="r_ad0e1e402662e1d56f6ca85763b2644e6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0e1e402662e1d56f6ca85763b2644e6">qoi_error_code</a> { <br />
+&#160;&#160;<a class="el" href="#ad0e1e402662e1d56f6ca85763b2644e6a43f4952ac619674e626d422a18baf704">QOI_NOT_INITIALIZED</a> = -1
+, <a class="el" href="#ad0e1e402662e1d56f6ca85763b2644e6a825715201e7220d3e1346930cf6c8495">QOI_OK</a>
+, <a class="el" href="#ad0e1e402662e1d56f6ca85763b2644e6abade7dcc9ede2a7228911f7d786993a8">QOI_NULL_BUFFER</a>
+, <a class="el" href="#ad0e1e402662e1d56f6ca85763b2644e6aa7be65145a7787b7c8e12c884b988140">QOI_INVAILD_FILE</a>
 , <br />
-&#160;&#160;<b>QOI_NO_FILE</b>
-, <b>QOI_NO_FILENAME</b>
+&#160;&#160;<a class="el" href="#ad0e1e402662e1d56f6ca85763b2644e6aab2fa44f82c25fe3cd60e69a069881a6">QOI_NO_FILE</a>
+, <a class="el" href="#ad0e1e402662e1d56f6ca85763b2644e6aa9a7f4772118597809ab153fe3e08803">QOI_NO_FILENAME</a>
 <br />
  }</td></tr>
-<tr class="memdesc:ad0e1e402662e1d56f6ca85763b2644e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error codes for different situations when handling a QOI file. <br /></td></tr>
+<tr class="memdesc:ad0e1e402662e1d56f6ca85763b2644e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error codes for different situations when handling a QOI file.  <a href="#ad0e1e402662e1d56f6ca85763b2644e6">More...</a><br /></td></tr>
 <tr class="separator:ad0e1e402662e1d56f6ca85763b2644e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -171,17 +172,48 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:abcd3aaf24d360ff1478cfa5f3bd16dd0" id="r_abcd3aaf24d360ff1478cfa5f3bd16dd0"><td class="memItemLeft" align="right" valign="top"><a id="abcd3aaf24d360ff1478cfa5f3bd16dd0" name="abcd3aaf24d360ff1478cfa5f3bd16dd0"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer0</b> [IMG_BUFFER_SIZE]</td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer0</b> [<a class="el" href="#af95d0d3fb6f9a4c1f198a1bbc520a6ad">IMG_BUFFER_SIZE</a>]</td></tr>
 <tr class="memdesc:abcd3aaf24d360ff1478cfa5f3bd16dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raw image buffer that decoded from qoi image file. <br /></td></tr>
 <tr class="separator:abcd3aaf24d360ff1478cfa5f3bd16dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71e76fb2289b3a7546a9d89fbe48cd41" id="r_a71e76fb2289b3a7546a9d89fbe48cd41"><td class="memItemLeft" align="right" valign="top"><a id="a71e76fb2289b3a7546a9d89fbe48cd41" name="a71e76fb2289b3a7546a9d89fbe48cd41"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer1</b> [IMG_BUFFER_SIZE]</td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer1</b> [<a class="el" href="#af95d0d3fb6f9a4c1f198a1bbc520a6ad">IMG_BUFFER_SIZE</a>]</td></tr>
 <tr class="memdesc:a71e76fb2289b3a7546a9d89fbe48cd41"><td class="mdescLeft">&#160;</td><td class="mdescRight">second raw image buffer that decoded from qoi image file <br /></td></tr>
 <tr class="separator:a71e76fb2289b3a7546a9d89fbe48cd41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This header contains declaration of functions related to QOI viewer. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ad0e1e402662e1d56f6ca85763b2644e6" name="ad0e1e402662e1d56f6ca85763b2644e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0e1e402662e1d56f6ca85763b2644e6">&#9670;&#160;</a></span>qoi_error_code</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#ad0e1e402662e1d56f6ca85763b2644e6">qoi_error_code</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Error codes for different situations when handling a QOI file. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad0e1e402662e1d56f6ca85763b2644e6a43f4952ac619674e626d422a18baf704" name="ad0e1e402662e1d56f6ca85763b2644e6a43f4952ac619674e626d422a18baf704"></a>QOI_NOT_INITIALIZED&#160;</td><td class="fielddoc"><p>QOI Image not yet decoded. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad0e1e402662e1d56f6ca85763b2644e6a825715201e7220d3e1346930cf6c8495" name="ad0e1e402662e1d56f6ca85763b2644e6a825715201e7220d3e1346930cf6c8495"></a>QOI_OK&#160;</td><td class="fielddoc"><p>QOI Image decoded successfully. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad0e1e402662e1d56f6ca85763b2644e6abade7dcc9ede2a7228911f7d786993a8" name="ad0e1e402662e1d56f6ca85763b2644e6abade7dcc9ede2a7228911f7d786993a8"></a>QOI_NULL_BUFFER&#160;</td><td class="fielddoc"><p>No buffer for image found. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad0e1e402662e1d56f6ca85763b2644e6aa7be65145a7787b7c8e12c884b988140" name="ad0e1e402662e1d56f6ca85763b2644e6aa7be65145a7787b7c8e12c884b988140"></a>QOI_INVAILD_FILE&#160;</td><td class="fielddoc"><p>Invaild QOI image file found. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad0e1e402662e1d56f6ca85763b2644e6aab2fa44f82c25fe3cd60e69a069881a6" name="ad0e1e402662e1d56f6ca85763b2644e6aab2fa44f82c25fe3cd60e69a069881a6"></a>QOI_NO_FILE&#160;</td><td class="fielddoc"><p>No file found given a filename to the supposed QOI image. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad0e1e402662e1d56f6ca85763b2644e6aa9a7f4772118597809ab153fe3e08803" name="ad0e1e402662e1d56f6ca85763b2644e6aa9a7f4772118597809ab153fe3e08803"></a>QOI_NO_FILENAME&#160;</td><td class="fielddoc"><p>Filename to the QOI image not passed to decoder. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="acf78f4e0b7d8127f774ca8fe1284981c" name="acf78f4e0b7d8127f774ca8fe1284981c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acf78f4e0b7d8127f774ca8fe1284981c">&#9670;&#160;</a></span>draw_image()</h2>
 

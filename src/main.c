@@ -84,7 +84,7 @@ struct name_node_pool_t {
 };
 
 /// @brief Reads the names of QOI images from ROM
-/// @param start_node The inital node
+/// @param start_node The initial node
 void readNames(name_node_pool_t* start_node) {
     char sbuf[MAX_STRING_SIZE];
     
@@ -121,7 +121,7 @@ void readNames(name_node_pool_t* start_node) {
     }
 }
 
-/// @brief This function initalizes libdragon functions
+/// @brief This function initializes libdragon functions
 static inline void init_program() {
     console_init();
 
@@ -151,6 +151,8 @@ void start_viewer() {
 
 }
 
+/// @brief Prints the first values of the pixel decoded by the QOI Decoder
+/// @param info QOI Image Metadata
 void printFirstDecodedValues(qoi_img_info_t* info) {
     printf(
         "decoded %s in %f ms!\n",
@@ -190,7 +192,7 @@ int main(void) {
         .width = 0,
         .height = 0,
         .channels = 0,
-        .error = QOI_NOT_INITALIZED
+        .error = QOI_NOT_INITIALIZED
     };
 
     // Font for displaying debug text

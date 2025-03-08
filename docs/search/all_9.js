@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pool_5fimg_5fsize_0',['POOL_IMG_SIZE',['../main_8c.html#a27f57cb1bfd33adac58ff5186e87c093',1,'main.c']]],
-  ['prev_1',['prev',['../structname__node__pool__t.html#a08b822983824cb3de59f6497dea42c8b',1,'name_node_pool_t']]]
+  ['openqoifile_0',['openQOIFile',['../qoi__viewer_8c.html#ae6448532d9241468e03949360ffb01dc',1,'openQOIFile(const char *filename, uint8_t *bytes, qoi_img_info_t *info):&#160;qoi_viewer.c'],['../qoi__viewer_8h.html#ae6448532d9241468e03949360ffb01dc',1,'openQOIFile(const char *filename, uint8_t *bytes, qoi_img_info_t *info):&#160;qoi_viewer.c']]]
 ];

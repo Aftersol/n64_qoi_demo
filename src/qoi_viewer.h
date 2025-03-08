@@ -42,7 +42,7 @@ extern "C" {
 #include <stdbool.h>
 #include <libdragon.h>
 
-// Image buffer size: 320*240*4
+/// @brief Image buffer size: 320 pixels in width * 240 pixels in height * 4 channels
 #define IMG_BUFFER_SIZE 307200
 
 extern uint8_t buffer0[IMG_BUFFER_SIZE];
@@ -51,11 +51,17 @@ extern uint8_t buffer1[IMG_BUFFER_SIZE];
 
 /// @brief Error codes for different situations when handling a QOI file
 typedef enum qoi_error_code {
-    QOI_NOT_INITALIZED = -1,
+    /// @brief QOI Image not yet decoded
+    QOI_NOT_INITIALIZED = -1,
+    /// @brief QOI Image decoded successfully
     QOI_OK, 
+    /// @brief No buffer for image found
     QOI_NULL_BUFFER,
+    /// @brief Invaild QOI image file found
     QOI_INVAILD_FILE,
+    /// @brief No file found given a filename to the supposed QOI image
     QOI_NO_FILE,
+    /// @brief Filename to the QOI image not passed to decoder
     QOI_NO_FILENAME
 } qoi_error_code;
 

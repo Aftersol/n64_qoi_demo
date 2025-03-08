@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pool_5fimg_5fsize_0',['POOL_IMG_SIZE',['../main_8c.html#a27f57cb1bfd33adac58ff5186e87c093',1,'main.c']]]
+  ['max_5fstring_5fsize_0',['MAX_STRING_SIZE',['../main_8c.html#a220f38b26fa99d4d91b574f42d991516',1,'main.c']]]
 ];

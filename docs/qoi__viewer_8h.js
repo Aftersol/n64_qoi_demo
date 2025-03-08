@@ -1,10 +1,11 @@
 var qoi__viewer_8h =
 [
     [ "qoi_img_info", "structqoi__img__info.html", "structqoi__img__info" ],
+    [ "IMG_BUFFER_SIZE", "qoi__viewer_8h.html#af95d0d3fb6f9a4c1f198a1bbc520a6ad", null ],
     [ "qoi_error_code", "qoi__viewer_8h.html#a27840c83136c5e3ed3f3c936bbabf46a", null ],
     [ "qoi_img_info_t", "qoi__viewer_8h.html#af665b5bf330172f0f1d548e0a6fbca76", null ],
     [ "qoi_error_code", "qoi__viewer_8h.html#ad0e1e402662e1d56f6ca85763b2644e6", [
-      [ "QOI_NOT_INITALIZED", "qoi__viewer_8h.html#ad0e1e402662e1d56f6ca85763b2644e6a2b3bb9caff1c88d3037d74306b42818b", null ],
+      [ "QOI_NOT_INITIALIZED", "qoi__viewer_8h.html#ad0e1e402662e1d56f6ca85763b2644e6a43f4952ac619674e626d422a18baf704", null ],
       [ "QOI_OK", "qoi__viewer_8h.html#ad0e1e402662e1d56f6ca85763b2644e6a825715201e7220d3e1346930cf6c8495", null ],
       [ "QOI_NULL_BUFFER", "qoi__viewer_8h.html#ad0e1e402662e1d56f6ca85763b2644e6abade7dcc9ede2a7228911f7d786993a8", null ],
       [ "QOI_INVAILD_FILE", "qoi__viewer_8h.html#ad0e1e402662e1d56f6ca85763b2644e6aa7be65145a7787b7c8e12c884b988140", null ],
