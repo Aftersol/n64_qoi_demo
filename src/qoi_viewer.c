@@ -190,6 +190,8 @@ void openQOIFile(const char* filename, uint8_t* bytes, qoi_img_info_t* info) {
     while (!qoi_dec_done(&dec)) {
         px = qoi_decode_chunk(&dec);
         
+        // O2 still copy bytes so we use pointer trick to pretend
+        // that pixel data is an integer and copy 4 bytes at a time
         *(uint32_t*)(bytes+seek) = px.concatenated_pixel_values;
         
         seek += 4;
