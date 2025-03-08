@@ -1,4 +1,5 @@
 # N64 QOI Viewer
+![A text that says QOI with a beer bottle behind QOI text with N64 logo on top](assets/logo/n64_qoi_logo_256px.png)
 
 An image viewer that loads QOI images on N64
 
