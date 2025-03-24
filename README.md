@@ -6,6 +6,12 @@ An image viewer that loads QOI images on N64
 ![An fuzzy image of a parrot](assets/demo_images/qoi_demo_image0.jpg)
 ![An fuzzy image of four dice. The red die is in front. Blue, green, and yellow in the back in a triangle clockwise formation](assets/demo_images/qoi_demo_image1.jpg)
 
+## Downloads
+
+[Go to this page to get the latest ROM: https://github.com/Aftersol/n64_qoi_demo/releases/](https://github.com/Aftersol/n64_qoi_demo/releases/)
+
+---
+
 ## How to View Images on N64 QOI Viewer
 The maximum supported width is 320px and the maximum supported height is 240px.
 This step assumes you have FFMPEG installed.

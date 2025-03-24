@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "N64 QOI Demo", "index.html", [
+    [ "N64 QOI Viewer", "index.html", "index" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
