@@ -62,10 +62,10 @@ void draw_image(surface_t* disp, qoi_img_info_t info) {
 
     rdpq_attach(disp, NULL);
 
-    rdpq_set_mode_standard();
-
-    rdpq_set_fill_color(RGBA32(0, 0, 0, 255));
+    rdpq_set_mode_fill(RGBA32(0, 0, 0, 255));
     rdpq_fill_rectangle(0, 0, 320, 240);
+
+    rdpq_set_mode_standard();
 
     // draw decoded image into screen
     rdpq_tex_blit(&image, 0.0, 0.0, NULL);
