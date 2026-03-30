@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['qoi_20viewer_0',['N64 QOI Viewer',['../index.html',1,'']]]
+  ['downloads_0',['Downloads',['../index.html#autotoc_md1',1,'']]]
 ];
