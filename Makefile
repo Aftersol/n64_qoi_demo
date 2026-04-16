@@ -25,18 +25,18 @@ SOURCE_DIR=src
 BUILD_DIR=build
 include $(N64_INST)/include/n64.mk
 
-all: qoi.z64
+all: qoi_dec.z64
 .PHONY: all
 FILESYSTEM_DIR = filesystem
 assets = $(wildcard $(FILESYSTEM_DIR)/*.qoi)
 
 OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/qoi_viewer.o
 
-qoi.z64: N64_ROM_TITLE="qoiImageViewer"
-qoi.z64: $(BUILD_DIR)/qoi.dfs
+qoi_dec.z64: N64_ROM_TITLE="qoiImageViewer"
+qoi_dec.z64: $(BUILD_DIR)/qoi_dec.dfs
 
-$(BUILD_DIR)/qoi.elf: $(OBJS)
-$(BUILD_DIR)/qoi.dfs: $(assets)
+$(BUILD_DIR)/qoi_dec.elf: $(OBJS)
+$(BUILD_DIR)/qoi_dec.dfs: $(assets)
 	@echo "	[DFS] $@"
 	if [ ! -s "$<"]; then rm -f "$<"; fi
 	$(N64_MKDFS) "$@" filesystem >/dev/null
