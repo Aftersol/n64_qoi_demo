@@ -8,7 +8,7 @@ An image viewer that loads QOI images on N64
 
 ## Downloads
 
-[Go to this page to get the latest ROM: https://github.com/Aftersol/n64_qoi_demo/releases/](https://github.com/Aftersol/n64_qoi_demo/releases/)
+[Go to this page to get the latest ROM: https://github.com/Aftersol/n64_qoi_dec/releases/](https://github.com/Aftersol/n64_qoi_dec/releases/)
 
 ---
 
