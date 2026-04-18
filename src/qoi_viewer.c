@@ -6,7 +6,7 @@
 
     Code licensed under MIT License
 
-    Copyright (c) 2025 Aftersol
+    Copyright (c) 2025-2026 Aftersol
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -39,6 +39,7 @@
 
 #include <string.h>
 
+#include "config.h"
 #include "sQOI.h"
 #include "qoi_viewer.h"
 
@@ -89,7 +90,12 @@ void draw_image(surface_t* disp, qoi_img_info_t info) {
             1, 
             32, 
             32, 
-            "Current Image: %s\nSize: %i x %i\nChannels: %i (%s)\nDecode Time: %f ms",
+            "N64 QOI Viewer (Revised: %s)\n"
+            "Current Image: %s\n"
+            "Size: %i x %i\n"
+            "Channels: %i (%s)\n"
+            "Decode Time: %f ms",
+            revision_date,
             info.name,
             info.width,
             info.height,

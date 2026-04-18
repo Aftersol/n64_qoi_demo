@@ -8,7 +8,7 @@
 
     Code licensed under MIT License
 
-    Copyright (c) 2025 Aftersol
+    Copyright (c) 2025-2026 Aftersol
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -39,6 +39,8 @@
 #include <string.h>
 
 #include <libdragon.h>
+
+#include "config.h"
 
 #include "qoi_viewer.h"
 
@@ -152,8 +154,13 @@ void start_viewer() {
 /// @brief Prints the first values of the pixel decoded by the QOI Decoder
 /// @param info QOI Image Metadata
 void printFirstDecodedValues(qoi_img_info_t* info) {
+    
+    printf("QOI Image Viewer\n");
+
+    printf("Revision Date: %s\n", revision_date);
+
     printf(
-        "decoded %s in %f ms!\n",
+        "Decoded %s in %f ms!\n",
         info->name,
         info->decodeTime * 1000.0f
     ); // time in ms spent decoding
