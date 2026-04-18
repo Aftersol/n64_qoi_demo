@@ -95,7 +95,7 @@ void draw_image(surface_t* disp, qoi_img_info_t info) {
             "Size: %i x %i\n"
             "Channels: %i (%s)\n"
             "Decode Time: %f ms",
-            revision_date,
+            QOI_DEC_REVISION_DATE,
             info.name,
             info.width,
             info.height,

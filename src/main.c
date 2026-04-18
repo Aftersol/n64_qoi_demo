@@ -157,7 +157,7 @@ void printFirstDecodedValues(qoi_img_info_t* info) {
     
     printf("QOI Image Viewer\n");
 
-    printf("Revision Date: %s\n", revision_date);
+    printf("Revision Date: %s\n", QOI_DEC_REVISION_DATE);
 
     printf(
         "Decoded %s in %f ms!\n",
