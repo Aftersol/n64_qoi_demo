@@ -50,7 +50,7 @@ libdragon make
 
 ## Licenses
 
-Everything in the src folder is licensed under MIT License
+Everything in the src folder is licensed under MIT License. See [LICENSE page](https://github.com/Aftersol/n64_qoi_dec/blob/main/LICENSE) for more info.
 
 In the filesystem folder the following images are in the public domain:
 - zz_qrcode.qoi
