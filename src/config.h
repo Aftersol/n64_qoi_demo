@@ -36,7 +36,7 @@ extern "C" {
 #endif
 
 /// @brief Revision date of the program.
-#define QOI_DEC_REVISION_DATE "2026-04-17"
+#define QOI_DEC_REVISION_DATE "2026-05-01"
 
 #if __cplusplus
 }
