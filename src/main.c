@@ -109,7 +109,7 @@ void readNames(name_node_pool_t* start_node) {
                 node = (name_node_pool_t*)new_node;
             }
 
-            memset(node->name[node->num_images], 0, MAX_STRING_SIZE);
+            sys_hw_memset(node->name[node->num_images], 0, MAX_STRING_SIZE);
             snprintf(node->name[node->num_images], MAX_STRING_SIZE - 1, sbuf);
 
             node->num_images++;
@@ -207,7 +207,7 @@ int main(void) {
     
     readNames(&start_node);
 
-    memset(buffer0, 0, IMG_BUFFER_SIZE); // clear the buffer
+    sys_hw_memset(buffer0, 0, IMG_BUFFER_SIZE); // clear the buffer
     
     openQOIFile(start_node.name[0], &buffer0[0], &info);
 
