@@ -204,7 +204,7 @@ void openQOIFile(const char* filename, uint8_t* bytes, qoi_img_info_t* info) {
 
     }
     
-    memset(info->name, 0, 256);
+    sys_hw_memset(info->name, 0, 256);
 
     // copy first 255 characters to prevent string overflow
     memcpy(info->name, filename, strlen(filename) < 256 ? strlen(filename) : 255);
